@@ -2,113 +2,117 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>WOW Academy</title>
+  <title>WOW Academy — Вхід</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     * {
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #00c853, #009624);
       display: flex;
       align-items: center;
       justify-content: center;
+      background: radial-gradient(circle at 30% 30%, #00ff88, #00c853 60%, #009624);
     }
 
     .card {
-      background: #fff;
-      padding: 40px 30px;
+      width: 340px;
+      background: white;
+      padding: 28px;
       border-radius: 20px;
-      width: 360px;
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.15),
+        0 0 40px rgba(0, 255, 136, 0.25);
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform: translateY(10px);}
+      to {opacity:1; transform: translateY(0);}
     }
 
     .logo {
-      width: 120px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 10px 0 5px;
-      font-size: 26px;
+      font-weight: 800;
+      font-size: 28px;
+      color: #00c853;
+      margin-bottom: 6px;
     }
 
     .subtitle {
-      color: #777;
+      color: #666;
       font-size: 14px;
-      margin-bottom: 25px;
+      margin-bottom: 18px;
     }
 
-    input[type="password"],
-    input[type="text"] {
+    .input {
       width: 100%;
-      padding: 14px;
-      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      border-radius: 10px;
       border: 1px solid #ddd;
-      font-size: 16px;
-      margin-bottom: 10px;
-      outline: none;
+      font-size: 14px;
+      transition: 0.2s;
     }
 
-    input:focus {
+    .input:focus {
+      outline: none;
       border-color: #00c853;
+      box-shadow: 0 0 0 3px rgba(0,200,83,0.15);
     }
 
     .show-password {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin: 8px 0 20px;
+      margin: 8px 0 18px;
       font-size: 14px;
       color: #666;
       justify-content: flex-start;
     }
 
-    .show-password input {
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-    }
-
-    .show-password label {
-      cursor: pointer;
-      user-select: none;
-    }
-
-    button {
+    .button {
       width: 100%;
-      padding: 14px;
+      padding: 13px;
       border: none;
       border-radius: 12px;
-      background: #00c853;
+      background: linear-gradient(90deg, #00e676, #00c853);
       color: white;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.25s;
+      box-shadow: 0 0 20px rgba(0,200,83,0.45);
     }
 
-    button:hover {
-      background: #00b34a;
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(0,200,83,0.7);
     }
 
     .error {
-      color: #e53935;
-      margin-top: 12px;
-      font-size: 14px;
-      display: none;
+      color: #ff3b30;
+      font-size: 13px;
+      margin-top: 10px;
+      min-height: 16px;
     }
 
     .footer {
-      margin-top: 20px;
+      margin-top: 16px;
       font-size: 12px;
       color: #999;
+    }
+
+    @media (max-width: 420px) {
+      .card {
+        width: 92%;
+        padding: 24px;
+      }
     }
   </style>
 </head>
@@ -116,43 +120,49 @@
 <body>
 
   <div class="card">
-    <img src="logo.png" alt="WOW Logo" class="logo">
-
-    <h1>WOW Academy</h1>
+    <div class="logo">WOW Academy</div>
     <div class="subtitle">Авторизуйтеся до платформи навчання академії</div>
 
-    <input type="password" id="password" placeholder="Введіть пароль">
+    <input class="input" id="login" type="text" placeholder="Введіть логін">
+    <input class="input" id="password" type="password" placeholder="Введіть пароль">
 
     <div class="show-password">
-      <input type="checkbox" id="showPassword">
-      <label for="showPassword">Показати пароль</label>
+      <input type="checkbox" id="togglePass">
+      <label for="togglePass">Показати пароль</label>
     </div>
 
-    <button onclick="checkPassword()">Увійти</button>
+    <button class="button" onclick="checkLogin()">Увійти</button>
 
-    <div class="error" id="error">Невірний пароль</div>
+    <div class="error" id="error"></div>
 
     <div class="footer">© 2026 WOW Academy</div>
   </div>
 
   <script>
-    const correctPassword = "123456"; // ← зміни на свій
+    const CORRECT_PASSWORD = "12345"; // ← зміни якщо треба
 
-    function checkPassword() {
-      const input = document.getElementById("password").value;
+    function checkLogin() {
+      const login = document.getElementById("login").value;
+      const password = document.getElementById("password").value;
       const error = document.getElementById("error");
 
-      if (input === correctPassword) {
-        error.style.display = "none";
-        alert("Успішний вхід!");
+      if (!login) {
+        error.textContent = "Введіть логін";
+        return;
+      }
+
+      if (password === CORRECT_PASSWORD) {
+        error.style.color = "#00c853";
+        error.textContent = "Успішний вхід ✅";
       } else {
-        error.style.display = "block";
+        error.style.color = "#ff3b30";
+        error.textContent = "Невірний пароль";
       }
     }
 
-    document.getElementById("showPassword").addEventListener("change", function () {
-      const passwordInput = document.getElementById("password");
-      passwordInput.type = this.checked ? "text" : "password";
+    document.getElementById("togglePass").addEventListener("change", function() {
+      const pass = document.getElementById("password");
+      pass.type = this.checked ? "text" : "password";
     });
   </script>
 
