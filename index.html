@@ -139,31 +139,22 @@
   </div>
 
   <script>
-    const CORRECT_PASSWORD = "12345"; // ← зміни якщо треба
+    });<script>
+const CORRECT_PASSWORD = "12345"; // можеш змінити
 
-    function checkLogin() {
-      const login = document.getElementById("login").value;
-      const password = document.getElementById("password").value;
-      const error = document.getElementById("error");
+document.querySelector('.login-form').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-      if (!login) {
-        error.textContent = "Введіть логін";
-        return;
-      }
+  const password = document.getElementById('password').value;
 
-      if (password === CORRECT_PASSWORD) {
-        error.style.color = "#00c853";
-        error.textContent = "Успішний вхід ✅";
-      } else {
-        error.style.color = "#ff3b30";
-        error.textContent = "Невірний пароль";
-      }
-    }
-
-    document.getElementById("togglePass").addEventListener("change", function() {
-      const pass = document.getElementById("password");
-      pass.type = this.checked ? "text" : "password";
-    });
+  if (password === CORRECT_PASSWORD) {
+    // 🔥 ТУТ ПОСИЛАННЯ
+    window.location.href = "https://google.com";
+  } else {
+    alert("Невірний пароль");
+  }
+});
+</script>
   </script>
 
 </body>
