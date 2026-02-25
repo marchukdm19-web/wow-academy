@@ -1,161 +1,165 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>WOW Academy — Вхід</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>WOW Academy | Авторизація</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 30% 30%, #00ff88, #00c853 60%, #009624);
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #19B51F, #0f8a17);
+  }
 
-    .card {
-      width: 340px;
-      background: white;
-      padding: 28px;
-      border-radius: 20px;
-      box-shadow:
-        0 20px 40px rgba(0,0,0,0.15),
-        0 0 40px rgba(0, 255, 136, 0.25);
-      text-align: center;
-      animation: fadeIn 0.6s ease;
-    }
+  .box {
+    background: white;
+    width: 400px;
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+    text-align: center;
+  }
 
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(10px);}
-      to {opacity:1; transform: translateY(0);}
-    }
+  /* ✅ ФІКС ЛОГО */
+  .logo {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+  }
 
-    .logo {
-      font-weight: 800;
-      font-size: 28px;
-      color: #00c853;
-      margin-bottom: 6px;
-    }
+  .subtitle {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 25px;
+    font-weight: 500;
+  }
 
-    .subtitle {
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
+  input {
+    padding: 15px;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 15px;
+  }
 
-    .input {
-      width: 100%;
-      padding: 12px 14px;
-      margin-bottom: 12px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      font-size: 14px;
-      transition: 0.2s;
-    }
+  input:focus {
+    border-color: #19B51F;
+    box-shadow: 0 0 0 3px rgba(25,181,31,0.15);
+  }
 
-    .input:focus {
-      outline: none;
-      border-color: #00c853;
-      box-shadow: 0 0 0 3px rgba(0,200,83,0.15);
-    }
+  /* ✅ рівна галочка */
+  .show-pass {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #555;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    justify-content: center;
+  }
 
-    .show-password {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 8px 0 18px;
-      font-size: 14px;
-      color: #666;
-      justify-content: flex-start;
-    }
+  .show-pass input {
+    width: auto;
+    margin: 0;
+  }
 
-    .button {
-      width: 100%;
-      padding: 13px;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(90deg, #00e676, #00c853);
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.25s;
-      box-shadow: 0 0 20px rgba(0,200,83,0.45);
-    }
+  /* ✨ glow кнопки */
+  button {
+    margin-top: 10px;
+    padding: 15px;
+    width: 100%;
+    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #19B51F;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 0 rgba(25,181,31,0);
+  }
 
-    .button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 30px rgba(0,200,83,0.7);
-    }
+  button:hover {
+    background: #0f8a17;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(25,181,31,0.6);
+  }
 
-    .error {
-      color: #ff3b30;
-      font-size: 13px;
-      margin-top: 10px;
-      min-height: 16px;
-    }
+  .error {
+    color: #e74c3c;
+    margin-top: 12px;
+    display: none;
+    font-size: 14px;
+  }
 
-    .footer {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #999;
-    }
-
-    @media (max-width: 420px) {
-      .card {
-        width: 92%;
-        padding: 24px;
-      }
-    }
-  </style>
+  .footer {
+    margin-top: 25px;
+    font-size: 12px;
+    color: #999;
+  }
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <div class="logo.png">WOW Academy</div>
-    <div class="subtitle">Авторизуйтеся до платформи навчання академії</div>
+<div class="box">
 
-    <input class="input" id="login" type="text" placeholder="Введіть логін">
-    <input class="input" id="password" type="password" placeholder="Введіть пароль">
+  <!-- 🔥 ВАЖЛИВО: файл logo.png має бути в репозиторії -->
+  <img src="logo.png" alt="WOW Camp" class="logo">
 
-    <div class="show-password">
-      <input type="checkbox" id="togglePass">
-      <label for="togglePass">Показати пароль</label>
-    </div>
-
-    <button class="button" onclick="checkLogin()">Увійти</button>
-
-    <div class="error" id="error"></div>
-
-    <div class="footer">© 2026 WOW Academy</div>
+  <div class="subtitle">
+    Авторизуйтеся до платформи навчання академії
   </div>
 
-  <script>
-    });<script>
-const CORRECT_PASSWORD = "12345"; // можеш змінити
+  <!-- ✅ ЛОГІН -->
+  <input type="text" id="login" placeholder="Введіть логін">
 
-document.querySelector('.login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+  <!-- ✅ ПАРОЛЬ -->
+  <input type="password" id="pass" placeholder="Введіть пароль">
 
-  const password = document.getElementById('password').value;
+  <!-- ✅ ПОКАЗАТИ ПАРОЛЬ -->
+  <label class="show-pass">
+    <input type="checkbox" onclick="togglePassword()">
+    Показати пароль
+  </label>
 
-  if (password === CORRECT_PASSWORD) {
-    // 🔥 ТУТ ПОСИЛАННЯ
-    window.location.href = "https://sites.google.com/view/wow-academy/навчання";
+  <button onclick="checkPass()">Увійти</button>
+
+  <div class="error" id="error">Невірний пароль</div>
+
+  <div class="footer">
+    © 2026 WOW Academy
+  </div>
+
+</div>
+
+<script>
+function togglePassword() {
+  const pass = document.getElementById("pass");
+  pass.type = pass.type === "password" ? "text" : "password";
+}
+
+function checkPass() {
+  const password = document.getElementById("pass").value;
+
+  if (password === "StudentWOW") {
+    window.location.href = "https://sites.google.com/view/wow-academy/%D0%BD%D0%B0%D0%B2%D1%87%D0%B0%D0%BD%D0%BD%D1%8F";
   } else {
-    alert("Невірний пароль");
+    document.getElementById("error").style.display = "block";
   }
-});
+}
 </script>
-  </script>
 
 </body>
 </html>
