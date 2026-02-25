@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>WOW Academy | Авторизація</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #19B51F, #0f8a17);
+  }
+
+  .box {
+    background: white;
+    width: 400px;
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+    text-align: center;
+  }
+
+  .logo {
+    width: 140px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+
+  input {
+    padding: 15px;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  input:focus {
+    border-color: #19B51F;
+    box-shadow: 0 0 0 3px rgba(25,181,31,0.15);
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #19B51F;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #0f8a17;
+    transform: translateY(-2px);
+  }
+
+  .error {
+    color: #e74c3c;
+    margin-top: 12px;
+    display: none;
+    font-size: 14px;
+  }
+
+  .footer {
+    margin-top: 25px;
+    font-size: 12px;
+    color: #999;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <!-- ВСТАВ СЮДИ ШЛЯХ ДО ЛОГО -->
+  <img src="logo.png" alt="WOW Camp" class="logo">
+
+  <div class="subtitle">
+    Авторизуйтеся до платформи навчання академії
+  </div>
+
+  <input type="password" id="pass" placeholder="Введіть пароль">
+  <button onclick="checkPass()">Увійти</button>
+
+  <div class="error" id="error">Невірний пароль</div>
+
+  <div class="footer">
+    © 2026 WOW Academy
+  </div>
+
+</div>
+
+<script>
+function checkPass() {
+  const password = document.getElementById("pass").value;
+
+  if (password === "StudentWOW") {
+    window.location.href = "https://sites.google.com/view/wow-academy/%D0%BD%D0%B0%D0%B2%D1%87%D0%B0%D0%BD%D0%BD%D1%8F";
+  } else {
+    document.getElementById("error").style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html> 
