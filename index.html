@@ -1,173 +1,160 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<title>WOW Academy | Авторизація</title>
+  <meta charset="UTF-8">
+  <title>WOW Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #19B51F, #0f8a17);
-  }
-
-  .box {
-    background: white;
-    width: 400px;
-    padding: 45px;
-    border-radius: 20px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-    text-align: center;
-    animation: fadeUp 0.6s ease;
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(25px);
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #00c853, #009624);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-  }
 
-  .logo {
-    width: 140px;
-    margin-bottom: 10px;
-    transition: 0.3s;
-  }
+    .card {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
 
-  .logo:hover {
-    transform: scale(1.05);
-  }
+    .logo {
+      width: 120px;
+      margin-bottom: 10px;
+    }
 
-  h2 {
-    margin: 5px 0 5px 0;
-  }
+    h1 {
+      margin: 10px 0 5px;
+      font-size: 26px;
+    }
 
-  .subtitle {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 25px;
-    font-weight: 500;
-  }
+    .subtitle {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
 
-  input {
-    padding: 15px;
-    font-size: 15px;
-    width: 100%;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    outline: none;
-    transition: 0.3s;
-  }
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      margin-bottom: 10px;
+      outline: none;
+    }
 
-  input:focus {
-    border-color: #19B51F;
-    box-shadow: 0 0 0 3px rgba(25,181,31,0.15);
-  }
+    input:focus {
+      border-color: #00c853;
+    }
 
-  button {
-    margin-top: 18px;
-    padding: 15px;
-    width: 100%;
-    font-size: 15px;
-    border: none;
-    border-radius: 12px;
-    background: #19B51F;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+    .show-password {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0 20px;
+      font-size: 14px;
+      color: #666;
+      justify-content: flex-start;
+    }
 
-  button:hover {
-    background: #0f8a17;
-    transform: translateY(-2px);
-  }
+    .show-password input {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
 
-  .error {
-    color: #e74c3c;
-    margin-top: 12px;
-    display: none;
-    font-size: 14px;
-  }
+    .show-password label {
+      cursor: pointer;
+      user-select: none;
+    }
 
-  .footer {
-    margin-top: 25px;
-    font-size: 12px;
-    color: #999;
-  }
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #00c853;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-  .show-pass {
-    text-align: right;
-    margin-top: 6px;
-    font-size: 13px;
-    color: #666;
-  }
-</style>
+    button:hover {
+      background: #00b34a;
+    }
+
+    .error {
+      color: #e53935;
+      margin-top: 12px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="box">
+  <div class="card">
+    <img src="logo.png" alt="WOW Logo" class="logo">
 
-  <img src="logo.png" alt="WOW Camp" class="logo">
-  <h2>WOW Academy</h2>
+    <h1>WOW Academy</h1>
+    <div class="subtitle">Авторизуйтеся до платформи навчання академії</div>
 
-  <div class="subtitle">
-    Авторизуйтеся до платформи навчання академії
+    <input type="password" id="password" placeholder="Введіть пароль">
+
+    <div class="show-password">
+      <input type="checkbox" id="showPassword">
+      <label for="showPassword">Показати пароль</label>
+    </div>
+
+    <button onclick="checkPassword()">Увійти</button>
+
+    <div class="error" id="error">Невірний пароль</div>
+
+    <div class="footer">© 2026 WOW Academy</div>
   </div>
 
-  <input type="password" id="pass" placeholder="Введіть пароль">
+  <script>
+    const correctPassword = "123456"; // ← зміни на свій
 
-  <div class="show-pass">
-    <label>
-      <input type="checkbox" onclick="togglePass()"> Показати пароль
-    </label>
-  </div>
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      const error = document.getElementById("error");
 
-  <button id="loginBtn" onclick="checkPass()">Увійти</button>
-
-  <div class="error" id="error">Невірний пароль</div>
-
-  <div class="footer">
-    © 2026 WOW Academy
-  </div>
-
-</div>
-
-<script>
-function togglePass() {
-  const pass = document.getElementById("pass");
-  pass.type = pass.type === "password" ? "text" : "password";
-}
-
-function checkPass() {
-  const password = document.getElementById("pass").value;
-  const btn = document.getElementById("loginBtn");
-
-  btn.innerText = "Перевірка...";
-  btn.disabled = true;
-
-  setTimeout(() => {
-    if (password === "StudentWOW") {
-      window.location.href = "https://sites.google.com/view/wow-academy/%D0%BD%D0%B0%D0%B2%D1%87%D0%B0%D0%BD%D0%BD%D1%8F";
-    } else {
-      document.getElementById("error").style.display = "block";
-      btn.innerText = "Увійти";
-      btn.disabled = false;
+      if (input === correctPassword) {
+        error.style.display = "none";
+        alert("Успішний вхід!");
+      } else {
+        error.style.display = "block";
+      }
     }
-  }, 700);
-}
-</script>
+
+    document.getElementById("showPassword").addEventListener("change", function () {
+      const passwordInput = document.getElementById("password");
+      passwordInput.type = this.checked ? "text" : "password";
+    });
+  </script>
 
 </body>
 </html>
