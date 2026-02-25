@@ -24,17 +24,38 @@
     border-radius: 20px;
     box-shadow: 0 25px 60px rgba(0,0,0,0.25);
     text-align: center;
+    animation: fadeUp 0.6s ease;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .logo {
     width: 140px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  h2 {
+    margin: 5px 0 5px 0;
   }
 
   .subtitle {
     font-size: 15px;
     color: #555;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-weight: 500;
   }
 
@@ -54,7 +75,7 @@
   }
 
   button {
-    margin-top: 20px;
+    margin-top: 18px;
     padding: 15px;
     width: 100%;
     font-size: 15px;
@@ -84,6 +105,13 @@
     font-size: 12px;
     color: #999;
   }
+
+  .show-pass {
+    text-align: right;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #666;
+  }
 </style>
 </head>
 
@@ -91,15 +119,22 @@
 
 <div class="box">
 
-  <!-- ВСТАВ СЮДИ ШЛЯХ ДО ЛОГО -->
   <img src="logo.png" alt="WOW Camp" class="logo">
+  <h2>WOW Academy</h2>
 
   <div class="subtitle">
     Авторизуйтеся до платформи навчання академії
   </div>
 
   <input type="password" id="pass" placeholder="Введіть пароль">
-  <button onclick="checkPass()">Увійти</button>
+
+  <div class="show-pass">
+    <label>
+      <input type="checkbox" onclick="togglePass()"> Показати пароль
+    </label>
+  </div>
+
+  <button id="loginBtn" onclick="checkPass()">Увійти</button>
 
   <div class="error" id="error">Невірний пароль</div>
 
@@ -110,16 +145,29 @@
 </div>
 
 <script>
+function togglePass() {
+  const pass = document.getElementById("pass");
+  pass.type = pass.type === "password" ? "text" : "password";
+}
+
 function checkPass() {
   const password = document.getElementById("pass").value;
+  const btn = document.getElementById("loginBtn");
 
-  if (password === "StudentWOW") {
-    window.location.href = "https://sites.google.com/view/wow-academy/%D0%BD%D0%B0%D0%B2%D1%87%D0%B0%D0%BD%D0%BD%D1%8F";
-  } else {
-    document.getElementById("error").style.display = "block";
-  }
+  btn.innerText = "Перевірка...";
+  btn.disabled = true;
+
+  setTimeout(() => {
+    if (password === "StudentWOW") {
+      window.location.href = "https://sites.google.com/view/wow-academy/%D0%BD%D0%B0%D0%B2%D1%87%D0%B0%D0%BD%D0%BD%D1%8F";
+    } else {
+      document.getElementById("error").style.display = "block";
+      btn.innerText = "Увійти";
+      btn.disabled = false;
+    }
+  }, 700);
 }
 </script>
 
 </body>
-</html> 
+</html>
