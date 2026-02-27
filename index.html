@@ -114,18 +114,19 @@
   }
 
   /* 📱 МОБІЛЬНА ВЕРСІЯ — НІЧОГО НЕ ВИДАЛЕНО, ТІЛЬКИ ДОДАНО */
-  @media (max-width: 480px) {
+ @media (max-width: 480px) {
 
-    body {
-      padding: 15px;
-      align-items: center;
-    }
+  body {
+    align-items: flex-start;   /* щоб не було дивного центрування */
+    padding-top: 40px;         /* нормальний відступ зверху */
+  }
 
-    .box {
-      width: 100%;
-      padding: 30px 20px;
-      border-radius: 18px;
-    }
+  .box {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
 
     .logo {
       width: 110px;
