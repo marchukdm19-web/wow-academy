@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WOW Academy | Авторизація</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -108,6 +109,46 @@
     font-size: 12px;
     color: #999;
   }
+
+  /* 📱 МОБІЛЬНА ВЕРСІЯ — НІЧОГО НЕ ВИДАЛЕНО, ТІЛЬКИ ДОДАНО */
+  @media (max-width: 480px) {
+
+    body {
+      padding: 15px;
+      align-items: center;
+    }
+
+    .box {
+      width: 100%;
+      padding: 30px 20px;
+      border-radius: 18px;
+    }
+
+    .logo {
+      width: 110px;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      font-size: 14px;
+      padding: 14px;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 14px;
+    }
+
+    .footer {
+      font-size: 11px;
+    }
+  }
+
 </style>
 </head>
 
@@ -115,20 +156,16 @@
 
 <div class="box">
 
-  <!-- 🔥 ВАЖЛИВО: файл logo.png має бути в репозиторії -->
   <img src="logo.png" alt="WOW Camp" class="logo">
 
   <div class="subtitle">
     Авторизуйтеся до платформи навчання академії тім-лідерів WOW CAMP
   </div>
 
-  <!-- ✅ ЛОГІН -->
   <input type="text" id="login" placeholder="Введіть логін">
 
-  <!-- ✅ ПАРОЛЬ -->
   <input type="password" id="pass" placeholder="Введіть пароль">
 
-  <!-- ✅ ПОКАЗАТИ ПАРОЛЬ -->
   <label class="show-pass">
     <input type="checkbox" onclick="togglePassword()">
     Показати пароль
@@ -154,7 +191,6 @@ function togglePassword() {
 function checkPass() {
   const password = document.getElementById("pass").value;
 
-  // ✅ СПИСОК ДОЗВОЛЕНИХ ПАРОЛІВ
   const validPasswords = [
     "StudentWOW",
     "8787WOW",
@@ -162,7 +198,6 @@ function checkPass() {
     "WOW2026"
   ];
 
-  // ✅ перевірка
   if (validPasswords.includes(password)) {
     window.location.href = "https://www.wowcampacademy.biz.ua/wow-академія";
   } else {
