@@ -187,6 +187,9 @@
 
 <script>
 
+let allowRedirect = false; 
+// ❗ Коли потрібно відновити перехід на сайт — просто змінити на true
+
 function togglePassword() {
   const pass = document.getElementById("pass");
   pass.type = pass.type === "password" ? "text" : "password";
@@ -203,13 +206,20 @@ function checkPass() {
   ];
 
   if (validPasswords.includes(password)) {
-    window.location.href = "https://www.wowcampacademy.biz.ua/wow-академія";
+
+    if (allowRedirect) {
+      // ✅ Коли набір відкритий
+      window.location.href = "https://www.wowcampacademy.biz.ua/wow-академія";
+    } else {
+      // 🔒 Коли набір ще не відкритий
+      alert("Програма Академія тім-лідерів ще не відкрила набір.");
+    }
+
   } else {
     document.getElementById("error").style.display = "block";
   }
 }
 
 </script>
-
 </body>
 </html>
