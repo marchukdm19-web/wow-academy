@@ -205,21 +205,15 @@ function checkPass() {
     "WOW2026"
   ];
 
-  if (validPasswords.includes(password)) {
+  if(validPasswords.includes(password)){
+window.location.href="https://www.wowcampacademy.biz.ua/wow-академія";
+}else{
+document.getElementById("error").style.display="block";
+}
 
-    if (allowRedirect) {
-      // ✅ Коли набір відкритий
-      window.location.href = "https://www.wowcampacademy.biz.ua/wow-академія";
-    } else {
-      // 🔒 Коли набір ще не відкритий
-      alert("Програма Академія тім-лідерів ще не відкрила набір.");
-    }
-
-  } else {
-    document.getElementById("error").style.display = "block";
-  }
 }
 
 </script>
+
 </body>
 </html>
